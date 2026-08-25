@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joseph Maggi — Mechatronics Engineer, Pittsburgh PA</title>
+<meta name="description" content="Portfolio of built hardware: robotic grinding cell, custom EOAT, control systems, and shipped commercial robot components.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F2EF;
+    --ink:#16181A;
+    --steel:#5A6169;
+    --line:#D3D5CE;
+    --yellow:#F5B31A;
+    --card:#FAFAF8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo',system-ui,sans-serif;
+    font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px}
+  a{color:var(--ink);text-underline-offset:3px}
+  a:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+  .mono{font-family:'IBM Plex Mono',monospace}
+
+  /* ===== Header ===== */
+  header{border-bottom:2px solid var(--ink);padding:56px 0 32px}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;color:var(--steel);text-transform:uppercase;margin-bottom:14px}
+  h1{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:800;font-size:clamp(44px,8vw,76px);
+    line-height:.95;letter-spacing:.01em;text-transform:uppercase;
+  }
+  .thesis{max-width:640px;margin-top:18px;font-size:19px}
+  .thesis strong{background:linear-gradient(transparent 55%, var(--yellow) 55%, var(--yellow) 92%, transparent 92%);font-weight:600}
+  .contact-row{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:14px}
+  .contact-row a{color:var(--steel)}
+  .contact-row a:hover{color:var(--ink)}
+
+  /* ===== Project sections ===== */
+  section{padding:52px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  h2{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:800;font-size:clamp(28px,4.5vw,40px);
+    text-transform:uppercase;letter-spacing:.015em;line-height:1.05;
+    margin-bottom:6px;
+  }
+  .sub{color:var(--steel);font-size:16px;margin-bottom:24px}
+
+  /* Title block — drawing-style spec table (signature element) */
+  .titleblock{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border:2px solid var(--ink);margin:0 0 30px;background:var(--card);
+  }
+  .tb-cell{padding:10px 14px;border-right:1px solid var(--ink)}
+  .tb-cell:last-child{border-right:none}
+  .tb-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:2px}
+  .tb-value{font-size:14.5px;font-weight:600;line-height:1.35}
+  .chip{
+    display:inline-block;background:var(--yellow);color:var(--ink);
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;
+    letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--ink);
+  }
+  @media (max-width:640px){
+    .titleblock{grid-template-columns:1fr 1fr}
+    .tb-cell:nth-child(2){border-right:none}
+    .tb-cell:nth-child(1),.tb-cell:nth-child(2){border-bottom:1px solid var(--ink)}
+  }
+
+  p + p{margin-top:14px}
+  .body-copy{max-width:700px}
+
+  /* Figures */
+  .figgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:34px}
+  .figgrid .full{grid-column:1 / -1}
+  @media (max-width:640px){.figgrid{grid-template-columns:1fr}}
+  figure{margin:0}
+  figure img{
+    width:100%;height:auto;display:block;border:1px solid var(--ink);
+    background:repeating-linear-gradient(45deg,#e8e9e4,#e8e9e4 12px,#dfe0da 12px,#dfe0da 24px);
+    min-height:120px;color:var(--steel);font-family:'IBM Plex Mono',monospace;font-size:13px;
+  }
+  figcaption{
+    margin-top:9px;font-size:14.5px;color:var(--steel);line-height:1.5;
+  }
+  figcaption .fig-no{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink);
+    border-left:4px solid var(--yellow);padding-left:8px;margin-right:8px;font-weight:500;
+  }
+
+  /* Results table */
+  .results{margin-top:34px;border:2px solid var(--ink);background:var(--card)}
+  .results-head{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+    padding:8px 14px;border-bottom:1px solid var(--ink);background:var(--ink);color:var(--paper);
+  }
+  .results table{width:100%;border-collapse:collapse}
+  .results td{padding:11px 14px;border-bottom:1px solid var(--line);font-size:15.5px;vertical-align:top}
+  .results tr:last-child td{border-bottom:none}
+  .results td:first-child{font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--steel);width:42%}
+  .results td:last-child{font-weight:600}
+  .hl{background:linear-gradient(transparent 55%, var(--yellow) 55%, var(--yellow) 92%, transparent 92%);padding:0 2px}
+
+  /* Video */
+  .video{margin-top:34px}
+  .video-frame{position:relative;width:100%;aspect-ratio:16/9;border:2px solid var(--ink);background:#000}
+  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-link{margin-top:10px;font-size:14.5px;color:var(--steel)}
+
+  /* Component list (RTT) */
+  .comp-list{margin-top:26px;display:grid;gap:0;border:2px solid var(--ink);background:var(--card)}
+  .comp{padding:18px 18px 16px;border-bottom:1px solid var(--line)}
+  .comp:last-child{border-bottom:none}
+  .comp h3{font-family:'Archivo',sans-serif;font-weight:600;font-size:17px;margin-bottom:4px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .comp p{font-size:15.5px;color:var(--steel);max-width:680px}
+
+  /* Skills footer */
+  .skills{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:28px}
+  @media (max-width:640px){.skills{grid-template-columns:1fr}}
+  .skill-group h3{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);margin-bottom:8px}
+  .skill-group p{font-size:15.5px}
+
+  footer{padding:44px 0 64px;color:var(--steel);font-size:14.5px}
+  footer .mono{font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="kicker">Build Log — Joseph Maggi · Mechatronics Engineer · Pittsburgh, PA</p>
+    <h1>I design, build,<br>and wire machines.</h1>
+    <p class="thesis">Every project below is hardware I physically made — modeled it, printed it, machined it, wired it, and <strong>debugged it until it worked</strong>. B.S. Mechatronics Engineering Technology, Bowling Green State University, Dec 2025.</p>
+    <div class="contact-row">
+      <a href="mailto:Josephmmaggi@gmail.com">Josephmmaggi@gmail.com</a>
+      <span>(434) 851-9456</span>
+      <a href="https://www.linkedin.com/" rel="noopener">LinkedIn: Joseph Maggi</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PROJECT 1 ============ -->
+<section id="grinding-cell">
+  <div class="wrap">
+    <h2>Automated Robotic Grinding Cell</h2>
+    <p class="sub">Senior design capstone — full lifecycle ownership from architecture to validated production capability.</p>
+
+    <div class="titleblock" role="table" aria-label="Project specifications">
+      <div class="tb-cell"><span class="tb-label">Role</span><span class="tb-value">Team Lead — tooling, controls &amp; electrical</span></div>
+      <div class="tb-cell"><span class="tb-label">Platform</span><span class="tb-value">FANUC robot + stepper-driven fixture axis</span></div>
+      <div class="tb-cell"><span class="tb-label">Workpiece</span><span class="tb-value">30″ stainless steel, surface finishing</span></div>
+      <div class="tb-cell"><span class="tb-label">Status</span><span class="tb-value"><span class="chip">Validated · 2025</span></span></div>
+    </div>
+
+    <div class="body-copy">
+      <p>A production shop needed automated grinding to meet new contract demand, but the turnkey robotic cell they were quoted — just over $300,000 — was far beyond their means. My team's answer: a smaller FANUC robot paired with a custom stepper-driven moving fixture that translates the part through the robot's work envelope, delivering the process at a small fraction of the cost.</p>
+      <p>I owned the end-of-arm tooling, the fixturing, and the entire electrical build — then commissioned the cell through the failures every real start-up produces.</p>
+    </div>
+
+    <div class="figgrid">
+      <figure class="full">
+        <img src="images/cell-full.jpg" alt="Full view of the automated grinding cell: FANUC robot with pneumatic grinder and stepper-driven moving fixture on a linear rail.">
+        <figcaption><span class="fig-no">FIG. 01</span>The complete cell — FANUC robot, pneumatic finishing tool, and stepper-driven moving fixture that expands the effective work envelope beyond the robot's native reach.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/fixture-iterations.jpg" alt="Sixteen 3D-printed fixture design iterations laid out in rows.">
+        <figcaption><span class="fig-no">FIG. 02</span>~16 fixture iterations, 3D-printed and tested under real grinding loads — one variable changed per revision to isolate what drove part deflection.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/wiring-box.jpg" alt="Open control enclosure showing power supply, digital stepper driver, Arduino, and wiring.">
+        <figcaption><span class="fig-no">FIG. 03</span>The control enclosure I wired: power supply, digital stepper driver, Arduino running my C++ firmware, and pneumatic valve control — integrated with the robot's I/O for teach-pendant operation.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/render-clamp.jpg" alt="SolidWorks render of the rigid grinder clamp.">
+        <figcaption><span class="fig-no">FIG. 04</span>Grinder clamp (EOAT) — rigid under process load, with repeatable locating so the tool can be removed for service and reinstalled without re-teaching taught positions.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/render-sleeve.jpg" alt="SolidWorks render of the precision sleeve adapter.">
+        <figcaption><span class="fig-no">FIG. 05</span>Sleeve adapter — the grinder axle was undersized relative to the contact wheel bore, so the axes were never concentric. This tight-tolerance sleeve aligned them and eliminated wobble.</figcaption>
+      </figure>
+    </div>
+
+    <div class="results">
+      <div class="results-head">Validated Results</div>
+      <table>
+        <tr><td>Cycle time</td><td><span class="hl">15:00 → 9:30 per part (−40%)</span></td></tr>
+        <tr><td>Throughput</td><td>~7 parts/hr vs ~4 manual (≈ +75%)</td></tr>
+        <tr><td>Capital cost</td><td>Small fraction of the ~$300k turnkey quote</td></tr>
+        <tr><td>Consistency</td><td>Improved surface finish; reduced regrind/repolish rework</td></tr>
+      </table>
+    </div>
+
+    <div class="video">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/NXkuGa7hWFA" title="Automated Grinding and Fixturing System — demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="video-link"><span class="fig-no">FIG. 06</span>System demo — <a href="https://www.youtube.com/watch?v=NXkuGa7hWFA" rel="noopener">watch on YouTube</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECT 2 ============ -->
+<section id="switchweld">
+  <div class="wrap">
+    <h2>SwitchWeld Cobot — Shipped Components</h2>
+    <p class="sub">Robotic Technologies of Tennessee — component design for a commercial collaborative welding robot.</p>
+
+    <div class="titleblock" role="table" aria-label="Project specifications">
+      <div class="tb-cell"><span class="tb-label">Role</span><span class="tb-value">Project Engineering Intern</span></div>
+      <div class="tb-cell"><span class="tb-label">Platform</span><span class="tb-value">SwitchWeld collaborative welding robot</span></div>
+      <div class="tb-cell"><span class="tb-label">Process</span><span class="tb-value">3D-print prototype → CNC machinability review → release</span></div>
+      <div class="tb-cell"><span class="tb-label">Status</span><span class="tb-value"><span class="chip">Shipped in product</span></span></div>
+    </div>
+
+    <div class="body-copy">
+      <p>Three components I designed made it into the final commercial product. Each one cycled through printed prototypes and machinability reviews with the in-house manufacturing engineer before release — imagery is withheld out of respect for the company's IP, but the work is described below and I'm glad to discuss it in detail.</p>
+    </div>
+
+    <div class="comp-list">
+      <div class="comp">
+        <h3>Welding torch end-effector mount <span class="chip">Shipped</span></h3>
+        <p>A precise, repeatable EOAT interface designed within the robot's fixed mounting-hole constraints — built to hold position under welding loads.</p>
+      </div>
+      <div class="comp">
+        <h3>Quick-detach cable guide system <span class="chip">Shipped</span></h3>
+        <p>Quick-detach at both the arm mount and the cable itself, with clearance geometry that keeps the routing clear of the cobot's joints through its full range of motion.</p>
+      </div>
+      <div class="comp">
+        <h3>Operator control box <span class="chip">Shipped</span></h3>
+        <p>Owned the electrical layout, wiring, and wiring-diagram creation — emergency stop, pause, and start circuits for the production system.</p>
+      </div>
+      <div class="comp">
+        <h3>Arc-current insulation disc</h3>
+        <p>Researched dielectric materials and designed a barrier to keep weld arc current from traveling up the arm and damaging the robot's internals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CURRENT WORK + SKILLS ============ -->
+<section id="now">
+  <div class="wrap">
+    <h2>Current Work</h2>
+    <p class="sub">Aerotech, Inc. — Pittsburgh, PA · Feb 2026 – present</p>
+    <div class="body-copy">
+      <p>I build, wire, and functionally test high-precision motion and automation systems in a cleanroom production environment — working from schematics and drawings, troubleshooting failures to root cause, and writing the work instructions production runs on (one documentation rebuild cut build time ~15%).</p>
+    </div>
+
+    <div class="skills">
+      <div class="skill-group">
+        <h3>CAD &amp; Fabrication</h3>
+        <p>SolidWorks · AutoCAD · ANSYS · GD&amp;T · 3D printing · design for CNC · fits &amp; tolerances</p>
+      </div>
+      <div class="skill-group">
+        <h3>Electronics &amp; Wiring</h3>
+        <p>Schematics · harness &amp; panel wiring · multimeter debugging · sensors · stepper drives · pneumatics</p>
+      </div>
+      <div class="skill-group">
+        <h3>Controls &amp; Code</h3>
+        <p>FANUC programming · Allen-Bradley PLC (Studio 5000) · Arduino / C++ · UART · MATLAB · Python (basic)</p>
+      </div>
+      <div class="skill-group">
+        <h3>Practice</h3>
+        <p>Root cause analysis · commissioning &amp; bring-up · functional test · work instructions · lean fundamentals</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Want a walkthrough of anything here? <a href="mailto:Josephmmaggi@gmail.com">Email me</a> — I'm happy to talk through any design decision on this page.</p>
+    <p class="mono" style="margin-top:14px">JM · Pittsburgh, PA · rev 1.0 — 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
